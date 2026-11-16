@@ -27,7 +27,6 @@ jobs:
           HTTP_CODE=$(curl -sS -o /tmp/response.txt -w "%{http_code}" \
             "$SUPABASE_URL/rest/v1/collection_periods?select=id&limit=1" \
             -H "apikey: $SUPABASE_ANON_KEY" \
-            -H "Authorization: Bearer $SUPABASE_ANON_KEY")
 
           echo "HTTP Status: $HTTP_CODE"
           cat /tmp/response.txt
