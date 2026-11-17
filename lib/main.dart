@@ -248,6 +248,9 @@ class _LoginPageState extends State<LoginPage> {
     });
 
     try {
+      debugPrint('LOGIN: Memulai permintaan login...');
+      debugPrint('LOGIN: Supabase URL = $supabaseUrl');
+
       final response =
           await Supabase.instance.client.functions.invoke(
         'login-username',
@@ -257,10 +260,13 @@ class _LoginPageState extends State<LoginPage> {
         },
       );
 
+      debugPrint('LOGIN: HTTP STATUS = ${response.status}');
+      debugPrint('LOGIN: RESPONSE DATA = ${response.data}');
+
       final data = response.data;
 
       if (response.status < 200 || response.status >= 300) {
-        throw Exception('Login gagal.');
+        throw Exception('Login gagal. HTTP ${response.status}.');
       }
 
       if (data is! Map ||
@@ -282,7 +288,7 @@ class _LoginPageState extends State<LoginPage> {
         'Login berhasil.',
         success: true,
       );
-        } on FunctionException catch (e) {
+    } on FunctionException catch (e) {
       debugPrint('LOGIN FUNCTION STATUS: ${e.status}');
       debugPrint('LOGIN FUNCTION REASON: ${e.reasonPhrase}');
       debugPrint('LOGIN FUNCTION DETAILS: ${e.details}');
@@ -299,11 +305,15 @@ class _LoginPageState extends State<LoginPage> {
       }
 
       showMessage(message);
-    } catch (e) {
+    } catch (e, stackTrace) {
+      debugPrint('LOGIN ERROR TYPE: ${e.runtimeType}');
+      debugPrint('LOGIN ERROR DETAIL: $e');
+      debugPrint('LOGIN STACK TRACE: $stackTrace');
+
       if (!mounted) return;
 
       showMessage(
-        'Login gagal. Periksa koneksi atau konfigurasi server.',
+        'Login gagal: ${e.runtimeType}. $e',
       );
     } finally {
       if (mounted) {
@@ -529,10 +539,6 @@ class _DashboardPageState extends State<DashboardPage> {
     _dashboardSummary = _loadDashboardSummary();
   }
 
-  // =====================================================
-  // MUAT RINGKASAN DASHBOARD
-  // =====================================================
-
   Future<Map<String, dynamic>> _loadDashboardSummary() async {
     final supabase = Supabase.instance.client;
 
@@ -543,7 +549,6 @@ class _DashboardPageState extends State<DashboardPage> {
     num totalIncome = 0;
     num totalExpense = 0;
 
-    // Ringkasan keuangan hanya ditampilkan untuk admin.
     if (isAdmin) {
       final transactions = await supabase
           .from('transactions')
@@ -598,10 +603,6 @@ class _DashboardPageState extends State<DashboardPage> {
     return 'Rp${buffer.toString()}';
   }
 
-  // =====================================================
-  // LOGOUT
-  // =====================================================
-
   Future<void> _logout() async {
     final confirm = await showDialog<bool>(
       context: context,
@@ -635,10 +636,6 @@ class _DashboardPageState extends State<DashboardPage> {
       );
     }
   }
-
-  // =====================================================
-  // NAVIGASI MENU
-  // =====================================================
 
   Future<void> _openFeature(String feature) async {
     if (feature == 'Data Warga') {
@@ -743,10 +740,6 @@ class _DashboardPageState extends State<DashboardPage> {
       ),
     );
   }
-
-  // =====================================================
-  // KARTU RINGKASAN
-  // =====================================================
 
   Widget _summaryCard({
     required String title,
@@ -898,10 +891,6 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 
-  // =====================================================
-  // KARTU MENU
-  // =====================================================
-
   Widget _menuCard({
     required String title,
     required String description,
@@ -949,10 +938,6 @@ class _DashboardPageState extends State<DashboardPage> {
       ),
     );
   }
-
-  // =====================================================
-  // BUILD DASHBOARD
-  // =====================================================
 
   @override
   Widget build(BuildContext context) {
