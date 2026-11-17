@@ -4,7 +4,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:label="jimpitan_warga"
+        android:label="JIMPITAN"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 

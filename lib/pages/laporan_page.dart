@@ -481,7 +481,7 @@ class _LaporanPageState extends State<LaporanPage> {
           : _periodName(selectedPeriodId);
 
       jimpitanSheet.appendRow([
-        TextCellValue('LAPORAN JIMPITAN WARGA'),
+        TextCellValue('LAPORAN jimpitan'),
       ]);
 
       jimpitanSheet.appendRow([
@@ -585,7 +585,7 @@ class _LaporanPageState extends State<LaporanPage> {
       final financeSheet = excel['Keuangan'];
 
       financeSheet.appendRow([
-        TextCellValue('LAPORAN KEUANGAN JIMPITAN WARGA'),
+        TextCellValue('LAPORAN KEUANGAN jimpitan'),
       ]);
 
       financeSheet.appendRow([

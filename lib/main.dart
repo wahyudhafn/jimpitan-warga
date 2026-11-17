@@ -36,7 +36,7 @@ class JimpitanApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Jimpitan Warga',
+      title: 'jimpitan',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
@@ -358,7 +358,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   const SizedBox(height: 35),
                   const Text(
-                    'Jimpitan Warga',
+                    'jimpitan',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 28,
@@ -369,7 +369,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 8),
                   const Text(
-                    'Sistem pencatatan jimpitan warga',
+                    'Sistem pencatatan jimpitan',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 14,
@@ -492,7 +492,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 55),
                   const Text(
-                    'Jimpitan Warga',
+                    'jimpitan',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 12,
@@ -948,7 +948,7 @@ class _DashboardPageState extends State<DashboardPage> {
         surfaceTintColor: Colors.white,
         elevation: 0,
         title: const Text(
-          'Jimpitan Warga',
+          'jimpitan',
           style: TextStyle(
             color: headingColor,
             fontWeight: FontWeight.w600,

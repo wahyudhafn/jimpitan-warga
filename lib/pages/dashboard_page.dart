@@ -592,7 +592,7 @@ class _DashboardPageState extends State<DashboardPage> {
         surfaceTintColor: Colors.white,
         elevation: 0,
         title: const Text(
-          'Jimpitan Warga',
+          'jimpitan',
           style: TextStyle(
             fontSize: 19,
             fontWeight: FontWeight.w700,

@@ -1,5 +1,5 @@
 
-name: Build Jimpitan Warga Android
+name: Build jimpitan Android
 
 on:
   push:
@@ -47,6 +47,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
-          name: Jimpitan Warga ${{ github.ref_name }}
+          name: jimpitan ${{ github.ref_name }}
           generate_release_notes: true
           files: Jimpitan-Warga-${{ github.ref_name }}.apk

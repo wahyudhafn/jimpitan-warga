@@ -15,7 +15,7 @@ class _SettingPageState extends State<SettingPage> {
   final formKey = GlobalKey<FormState>();
 
   final appNameController =
-      TextEditingController(text: 'Jimpitan Warga');
+      TextEditingController(text: 'jimpitan');
   final neighborhoodController = TextEditingController();
   final addressController = TextEditingController();
   final amountController = TextEditingController();
