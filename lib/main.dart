@@ -282,14 +282,20 @@ class _LoginPageState extends State<LoginPage> {
         'Login berhasil.',
         success: true,
       );
-    } on FunctionException catch (e) {
+        } on FunctionException catch (e) {
+      debugPrint('LOGIN FUNCTION STATUS: ${e.status}');
+      debugPrint('LOGIN FUNCTION REASON: ${e.reasonPhrase}');
+      debugPrint('LOGIN FUNCTION DETAILS: ${e.details}');
+
       if (!mounted) return;
 
       final details = e.details;
-      String message = 'Username atau password salah.';
+      String message = 'Login gagal. HTTP ${e.status}.';
 
       if (details is Map && details['error'] is String) {
         message = details['error'] as String;
+      } else if (details is String && details.isNotEmpty) {
+        message = details;
       }
 
       showMessage(message);
